@@ -3,15 +3,14 @@
 Forkez le repository pour pouvoir en faire votre version avec votre travail.  
 Le sujet du TP se trouve [ici](./TP/SUJET.md)
 
-## Étudiant
+## Étudiant  
 
-Vous devez compléter cette partie pour qu'on puisse vous identifier.  
-
-Nom : XXXXX  
-Prénom : XXXXX  
-Groupe de TP : XXXXX (e.g. M1 ILSEN classique)  
+Nom : Jourdon  
+Prénom : Gautier  
+Groupe de TP : Gr1 (e.g. M1 ILSEN classique - changement en Groupe IA)  
 
 ## Remarques particulières
 
-Si vous avez des remarques particulières à faire sur le TP ou votre rendu vous
-pouvez les faire ici.
+Etant en cours de basculement en filière IA, 
+lors des prochains TPs je serai présent dans 
+le groupe des IAs.
