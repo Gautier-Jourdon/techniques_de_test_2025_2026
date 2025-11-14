@@ -5,8 +5,8 @@ Client simple pour tester les APIs PointSetManager et Triangulator.
 import requests
 import json
 from Point import Point
-from aide.PointSet import PointSet
-from aide.triangulation import Triangles
+from TP.modules.PointSet import PointSet
+from TP.modules.Triangulation import Triangulation
 
 
 class APIClient:
@@ -36,7 +36,7 @@ class APIClient:
         Raises:
             Exception: En cas d'erreur
         """
-        binary_data = point_set.to_binary()
+        binary_data = point_set.to_bytes()
         
         response = requests.post(
             f"{self.manager_url}/pointset",
@@ -83,7 +83,7 @@ class APIClient:
                 error_msg += f": {response.text}"
             raise Exception(f"Failed to get PointSet: {error_msg}")
     
-    def get_triangulation(self, point_set_id: str) -> Triangles:
+    def get_triangulation(self, point_set_id: str) -> Triangulation:
         """
         Calcule la triangulation d'un PointSet.
         
@@ -100,7 +100,7 @@ class APIClient:
         
         if response.status_code == 200:
             binary_data = response.content
-            return Triangles.from_binary(binary_data)
+            return Triangulation.from_binary(binary_data)
         else:
             error_msg = f"HTTP {response.status_code}"
             try:
@@ -109,7 +109,6 @@ class APIClient:
             except:
                 error_msg += f": {response.text}"
             raise Exception(f"Failed to get triangulation: {error_msg}")
-
 
 def test_workflow():
     """Test du workflow complet."""
@@ -127,7 +126,7 @@ def test_workflow():
             Point(0.5, 1.5)
         ]
         point_set = PointSet(points)
-        print(f"1. PointSet créé avec {point_set.size()} points")
+        print(f"1. PointSet créé avec {point_set.__len__()} points")
         
         # 2. Enregistrer le PointSet
         point_set_id = client.register_point_set(point_set)
@@ -135,7 +134,7 @@ def test_workflow():
         
         # 3. Récupérer le PointSet
         retrieved_point_set = client.get_point_set(point_set_id)
-        print(f"3. PointSet récupéré avec {retrieved_point_set.size()} points")
+        print(f"3. PointSet récupéré avec {retrieved_point_set.__len__()} points")
         
         # Vérifier l'égalité
         if point_set == retrieved_point_set:

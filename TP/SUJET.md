@@ -86,13 +86,13 @@ Le workflow typique est le suivant:
 - Le `Triangulator` réalise la triangulation
 - Le `Triangulator` répond au `Client` avec les `Triangles` issus de la triangulation
 
-### Représentations de `PointSet` et `Triangles` 
+### Représentations de `PointSet` et `Triangles`
 
 `PointSet` et `Triangles` sont les 2 structures de données complexes qui transitent
-entre les composants.  
+entre les composants.
 Compte tenu de la nature des données, il est important que leur représentation soit
 compacte, sans quoi les échanges entre les composants seraient coûteux.
-C'est pourquoi il a été défini une représentation binaire pour ces deux structures.  
+C'est pourquoi il a été défini une représentation binaire pour ces deux structures.
 Ces représentations sont attendues pour toutes les communications entre composants,
 libre ensuite à chaque composant d'avoir la représentation interne qu'il désire.
 
