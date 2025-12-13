@@ -67,11 +67,11 @@ Dans des terminaux séparés :
 # Terminal 1 : PointSetManager (port 5000)
 python start_servers.py manager
 
-# Terminal 2 : Triangulator (port 5001)  
+# Terminal 2 : Triangulator (port 5001)
 python start_servers.py triangulator
 ```
 
-Ou directement :
+Ou directement en bash :
 ```bash
 # PointSetManager
 python PointSetManager.py
@@ -93,7 +93,7 @@ python client_test.py
 python demo_apis.py
 ```
 
-### Utilisation programmatique
+### Utilisation des programmes
 
 ```python
 from Point import Point
@@ -101,15 +101,15 @@ from PointSet import PointSet
 from PointSetId import PointSetId
 from triangulation import DelaunayTriangulator
 
-# Créer des points
+# Pour créer des points facilement
 points = [Point(0.0, 0.0), Point(1.0, 0.0), Point(0.5, 1.0)]
 point_set = PointSet(points)
 
-# Triangulation
+# Mise en place de ma Triangulation
 triangulation = DelaunayTriangulator.triangulate(point_set)
 print(f"Triangulation avec {len(triangulation.triangles)} triangles")
 
-# Sérialisation binaire
+# Sérialisation binaire (la fameuse)
 binary_data = point_set.to_binary()
 restored_point_set = PointSet.from_binary(binary_data)
 ```
@@ -151,7 +151,7 @@ Le workflow typique :
 1. Client envoie PointSet → PointSetManager
 2. PointSetManager retourne PointSetID
 3. Client demande triangulation → Triangulator avec PointSetID
-4. Triangulator récupère PointSet → PointSetManager  
+4. Triangulator récupère PointSet → PointSetManager
 5. Triangulator calcule et retourne triangulation
 
 ## Développement
